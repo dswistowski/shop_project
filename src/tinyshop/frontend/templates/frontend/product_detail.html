@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<article class="container">
+{% include "frontend/_broadscrum_list.html" %}
+<h2>{% if category %}{% blocktrans with object as product %}Detail of {{ product }}{% endblocktrans %}{% else %}{% trans "Root category" %}{% endif %}</h2>
+<h3>{{ object }}</h3>
+<dl>
+    {% for field, value in object.get_custom_fields %}
+    <dt>{{ field.name }}</dt>
+    <dd>{{ value }}</dd>
+    {% endfor %}
+</dl>
+</article>
+{% endblock %}

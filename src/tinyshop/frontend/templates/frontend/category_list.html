@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<section class="container">
+    {% include "frontend/_broadscrum_list.html" %}
+    <h2>{% if category %}{% blocktrans with category as category %}Subcategories of {{ category }}{% endblocktrans %}{% else %}{% trans "Root category" %}{% endif %}</h2>
+</section>
+<hr/>
+<section class="container subcategories">
+{% if object_list %}
+    <h3>{% trans "Subcategories" %}</h3>
+    <nav>
+    <ul>
+    {% for category in object_list %}
+        <li><a href="{% url category_list parent=category.slug %}">{{ category }}</a></li>
+    {% empty %}
+        {% trans "No subcategories in this category" %}
+    {% endfor %}
+    </ul>
+    </nav>
+{% else %}
+    {% if category %}
+        <h3>{% trans "Products in this category" %}</h3>
+        <nav>
+        <ul>
+            {% for product in category.product_set.all %}
+                <li><a href="{% url product_detail slug=product.slug %}">{{ product }}</a></li>
+            {% empty %}
+                {% trans "No products in this category" %}
+            {% endfor %}
+        </ul>
+        </nav>
+        <a class="clear" href="{% url product_create parent=category.slug %}">{% trans "Add new product" %}</a>
+     {% endif %}
+{% endif %}
+</section>
+{% endblock %}

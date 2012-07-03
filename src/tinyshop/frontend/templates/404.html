@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load i18n %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>{% trans "TinyShop" %}</title>
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  {% block extra_header %}{% endblock %}
+</head>
+<body>
+
+  <div class="container">
+      <h1><a href="{% url category_root %}">{% trans "TinyShop" %}</a></h1>
+      <blockquote>{% trans "The best tinyshop in known universe" %}</blockquote>
+      <hr/>
+      <div id="content">
+      <h2>{% trans "Page does not exists" %}</h2>
+      </div>
+  </div>
+</body>
+</html>

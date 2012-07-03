@@ -1,0 +1,15 @@
+{% load i18n %}
+{% if category %}
+<nav class="parents">
+    <ul class="broadcrum">
+    <li><a href="{% url category_root %}">{% trans "Root" %}</a></li>
+    {% for parent in category.parents %}
+        <li><a href="{% url category_list parent=parent.slug %}">{{ parent }}</a></li>
+    {% endfor %}
+    {% if object or form %}
+        <li><a href="{% url category_list parent=category.slug %}">{{ category }}</a></li>
+    {% endif %}
+    </ul>
+    <div class="clear"></div>
+</nav>
+{% endif %}

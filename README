@@ -1,0 +1,8 @@
+Instalation:
+    run commands:
+        python bootstrap.py
+        bin/buildout
+    create file src/tinyshop/settings_custom.py with database, and instance specified settings
+    run command: ./manage.py syncdb --migrate
+    log as admin, and create some categories
+

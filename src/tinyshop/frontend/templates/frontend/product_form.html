@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<section class="container">
+{% include "frontend/_broadscrum_list.html" %}
+<h2>{% if category %}{% blocktrans with category as category %}New product in category {{ category }}{% endblocktrans %}{% else %}{% trans "Root category" %}{% endif %}</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <legend>{% trans "Add new product" %}</legend>
+    <fieldset>
+    <dl>
+    {% for field in form %}
+        {% if field.is_hidden %}
+            {{ field }}
+        {% else %}
+        {% if field.errors %}
+            <div class="error span-24 last">        
+            {{ field.errors }}
+            </div>
+        {% endif %}
+            <dt>{{ field.label_tag }}:</dt>
+            <dl>{{ field }}</dl>
+        {% endif %}
+    {% endfor %}
+    </dl>
+      <button type="submit" class="button positive">
+        <img src="{{ STATIC_URL }}css/blueprint/plugins/buttons/icons/tick.png" alt=""/> Save
+      </button>
+    </fieldset>
+</form>
+</section>
+{% endblock %}

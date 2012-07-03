@@ -1,0 +1,12 @@
+.broadcrum li {
+	display: block;
+	float: left;
+}
+.broadcrum li:AFTER {
+	content: " > ";
+}
+
+ul.broadcrum {
+	clear: both;
+}
+
